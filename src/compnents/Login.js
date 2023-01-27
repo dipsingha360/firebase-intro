@@ -18,6 +18,16 @@ const Login = () => {
       .catch((error) => console.log(error));
   };
 
+  const handleGithubLogIn = () => {
+    // google login
+    signInWithPopup(auth, providerGoogle)
+      .then((data) => {
+        console.log(data);
+        navigate("/profile");
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="login container mx-auto py-10">
       <h2 className="section-title text-center text-gray-500 text-4xl mb-10">
@@ -31,6 +41,14 @@ const Login = () => {
         >
           {" "}
           Login with Google
+        </button>
+
+        <button
+          onClick={handleGithubLogIn}
+          className="google-sign-in bg-gray-700 text-white h-14 w-96 rounded-md font-md hover:bg-orange-500 duration-300"
+        >
+          {" "}
+          Login with Github
         </button>
       </div>
     </div>

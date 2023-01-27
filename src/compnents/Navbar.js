@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import Login from "./Login";
 
-const Navbar = () => {
+const Navbar = ({ user }) => {
   return (
     <nav className="navbar container mx-auto flex justify-between items-center py-5 border-b ">
       <Link to="/" className="text-xl text-orange-500 font-semibold">
@@ -23,8 +24,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/login" className="hover:text-orange-500 duration-300">
-            Login
+          <Link
+            to={`/${user?.email ? "profile" : "login"}`}
+            className="hover:text-orange-500 duration-300"
+          >
+            {user ? `Welcome ${user.displayName}` : "Login"}
           </Link>
         </li>
       </ul>
