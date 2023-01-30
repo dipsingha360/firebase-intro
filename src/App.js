@@ -55,7 +55,7 @@ const App = () => {
           path="/register"
           element={
             // <RequireAuth2 user={user}>
-            <Register setUser={setUser} user={user} />
+            <Register />
             // </RequireAuth2>
           }
         />

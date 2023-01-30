@@ -9,7 +9,7 @@ import app from "../firebase/firebase.init";
 
 const auth = getAuth(app);
 
-const Register = ({ setUser, user }) => {
+const Register = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +24,7 @@ const Register = ({ setUser, user }) => {
           //update user
           updateUserProfile();
         }
-        setUser({ ...user, displayName: name });
+
         navigate("/login");
       })
       .catch((error) => {
@@ -40,6 +40,7 @@ const Register = ({ setUser, user }) => {
   const updateUserProfile = () => {
     updateProfile(auth.currentUser, {
       displayName: name,
+      photoURL: "https://randomuser.me/api/portraits/lego/1.jpg",
     })
       .then(() => {
         console.log("profile updated");
